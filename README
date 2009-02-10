@@ -1,0 +1,138 @@
+OKCal Code Contest
+
+irb example:
+
+#irb -r okcal
+
+cal = OKCal.new
+cal.new_event('daily','test1','20090215')
+cal.new_event('monthly','test5','20090215',{'stop' => '2009-12-12', 'frequency' => 0})
+
+
+Directions:
+
+
+Grant and Brian have agreed to do a little code challenge experiment  
+for us at the February meeting.  This is for the fun and education of  
+us all. Thanks guys!
+
+Below are the details of their challenge for them to see and for those  
+of us who wish to follow along.
+
+Tim is going to give a talk for the other half of the meeting, showing  
+off a few of his favorite libraries.
+
+As you can see, it's shaping up to be a great meeting!
+
+James Edward Gray II
+
+Calendar Code Challenge
+=======================
+
+The contestants will complete a simple calendar application with just  
+two abilities:  users should be able to enter events and see what  
+events will occur on a given day.  The primary challenge comes from  
+the fact that the code is expected to handle multiple types of events.
+
+Your Code
+---------
+
+The code you provide really only has to do two things:  accept new  
+event entries and provide a way to list all events occurring on a  
+given day.  No judging will be done on the interface, so you are free  
+to provide a nice interface for these two action or just build methods  
+to call in IRb or a testing environment.  Whatever is easiest for you  
+is fine.
+
+No judging will be done on tests, documentation, or any other  
+ancillary assets to the code itself.  However, you will be judged on  
+how easy it is for others to understand your code as outlined below  
+and these items may help with that.
+
+You also do not need to worry about the data stressing your code.   
+You're program doesn't need to handle so much data that it can't all  
+be stored in memory and event fields will be consistently sane.  No  
+dates will be used that are outside a two year range centered on  
+today, so you needn't worry about calendar changes or the resolution  
+of Ruby's built in Time class.  You just need to build the core  
+functionality of the problem.
+
+Event Types
+-----------
+
+The main challenge is that your calendar is expected to support  
+multiple types of events.  Users need to be able to create any or all  
+of the types listed below and searches must check all known events  
+returning all events that will fall on a given day, regardless of type.
+
+Each event type can have different fields and the types share some  
+fields.  Some fields are optional and some have defaults you need to  
+account for.
+
+All events have a unique name (a String) and a start date and time (a  
+Time) that are always provided.  All events can also have an end date  
+and time (also a Time), but this field can also be left nil to  
+indicate that an event is ongoing and does not end.
+
+You can mostly ignore the time portion of all dates and times for the  
+purposes of this exercise.  We're only interested in which events  
+appear on a given day and the times don't play into that.
+
+Beyond that, the event types differ as follows:
+
+* Daily events also have no additional fields.  They recur each day  
+between their start date and end date.
+* Weekly events have a frequency field (an Integer) that defaults to  
+one and a list of days (an Array containing one or more Strings from  
+the set:  "Sunday", "Monday", "Tuesday", "Wednesday", "Thursday",  
+"Friday", and "Saturday").  These events recur each week between their  
+start date and end date on the days indicated.  If frequency is  
+anything but one, they only appear if the week in question is  
+divisible by the frequency when counted as an offset from the start  
+date.  For example, a frequency of two means an event occurs every  
+other week and thus would appear within the first seven days of the  
+start date, skip the next seven, appear in the next seven, etc.
+* Monthly events can be set two ways.  The first type of monthly event  
+has a frequency field (same as the weekly version, but in the scope of  
+months), an "on the" field (a String from the set:  "first", "second",  
+"third", and "last"), and a day field (a String from the same set  
+mentioned in the weekly events days field).  Again, this date recurs  
+monthly bounded by the start and end date and as dictated by the  
+frequency.  The difference here is that the "on the" and day fields  
+indicate which day of the month the event happens on.
+* If the "on the" and day fields are omitted, you have the second type  
+of monthly event.  This event just repeats on the same day of the  
+month as the start date (if present in the current month).  These too  
+can have a frequency to skip months.
+* Finally, there are yearly events that just recur on the same day of  
+the year as their start date.  These events have no additional fields.
+
+The Judging
+-----------
+
+The spirit of this contest is totally for fun and there will be no  
+official winner or loser.  However, we do have some criteria upon  
+which entries will be considered, just for friendly bragging rights!
+
+The contestants are expected to make their solutions publicly  
+available by posting them to the mailing list two days before the  
+February meeting.  That means solutions should be posted on February  
+10th by 6:30 PM.
+
+At the meeting, each of you will explain the other contestant's  
+code.   You are expected to highlight how it works and point out  
+things you like about the solution.  You will be judged on how well  
+you understand the code you are showing and on how easy your code was  
+to understand.
+
+If you notice any problems with the code, like edge case searches it  
+wouldn't get right, feel free to point those out as well.  This shows  
+an even greater understanding of the code on your part.
+
+
+--~--~---------~--~----~------------~-------~--~----~
+You received this message because you are subscribed to the Google Groups "Oklahoma Ruby Users Group" group.
+To post to this group, send email to okrb@googlegroups.com
+To unsubscribe from this group, send email to okrb+unsubscribe@googlegroups.com
+For more options, visit this group at http://groups.google.com/group/okrb?hl=en
+-~----------~----~----~----~------~----~------~--~---
