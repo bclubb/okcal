@@ -1,7 +1,7 @@
 # Calendar code for 
 
 ## irb example
-#require 'okcal.rb'
+#require 'okcal'
 #cal = OKCal.new
 #cal.new_event('daily','test1','20090215')
 #cal.new_event('monthly','test5','20090215',{'stop' => '2009-12-12', 'frequency' => 0})
@@ -12,7 +12,7 @@
 ##Here is a script that uses the code
 # #!/usr/bin/env ruby
 # require 'rubygems'
-# require './okcal.rb'
+# require 'okcal'
 # 
 # cal = OKCal.new
 # cal.new_event('daily','test1','20090215')

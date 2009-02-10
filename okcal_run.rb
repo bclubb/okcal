@@ -1,6 +1,6 @@
 #!/usr/bin/env ruby
 require 'rubygems'
-require './okcal.rb'
+require 'okcal.rb'
 
 cal = OKCal.new
 cal.new_event('daily','test1','20090215')
